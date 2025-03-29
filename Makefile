@@ -6,7 +6,7 @@
 #    By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/21 15:15:33 by kiwasa            #+#    #+#              #
-#    Updated: 2025/03/29 21:43:06 by kiwasa           ###   ########.fr        #
+#    Updated: 2025/03/30 02:30:45 by kiwasa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,14 +60,14 @@ NAME = so_long
 SRC_DIR = ./
 OBJ_DIR = ./obj/
 
-SRC_FILES = main.c init.c map.c map_check.c path_check.c render.c input.c game.c error_exit.c get_next_line.c utils.c
+SRC_FILES = main.c init.c map.c map_check.c path_check.c render.c input.c game.c error_exit.c get_next_line.c utils.c free_game.c
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
 SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJS = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I./minilibx-linux -I./libft
+CFLAGS = -Wall -Wextra -Werror -I./minilibx-linux -I./libft -I./inc
 
 MLX_DIR = ./minilibx-linux/
 MLX = $(MLX_DIR)libmlx.a

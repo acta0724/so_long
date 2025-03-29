@@ -6,11 +6,11 @@
 /*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:15:42 by kiwasa            #+#    #+#             */
-/*   Updated: 2025/03/29 00:09:09 by kiwasa           ###   ########.fr       */
+/*   Updated: 2025/03/30 02:41:09 by kiwasa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "inc/so_long.h"
 
 static int	count_map_height(char *map_file)
 {
@@ -49,8 +49,8 @@ int	parse_map(t_game *game, char *map_file)
 	fd = open(map_file, O_RDONLY);
 	if (fd < 0)
 		error_exit(ERR_FILE);
-	i = 0;
-	while (i < game->map.height)
+	i = -1;
+	while (++i < game->map.height)
 	{
 		line = get_next_line(fd);
 		if (!line)
@@ -58,7 +58,6 @@ int	parse_map(t_game *game, char *map_file)
 		if (line[ft_strlen(line) - 1] == '\n')
 			line[ft_strlen(line) - 1] = '\0';
 		game->map.grid[i] = line;
-		i++;
 	}
 	game->map.grid[i] = NULL;
 	close(fd);

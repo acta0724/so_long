@@ -6,11 +6,11 @@
 /*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 04:11:35 by kiwasa            #+#    #+#             */
-/*   Updated: 2025/03/29 21:24:03 by kiwasa           ###   ########.fr       */
+/*   Updated: 2025/03/30 02:14:20 by kiwasa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "inc/so_long.h"
 
 static char	*append_to_buffer(char *buffer, char *temp, int bytes_read)
 {

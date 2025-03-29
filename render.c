@@ -6,11 +6,11 @@
 /*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:15:51 by kiwasa            #+#    #+#             */
-/*   Updated: 2025/03/30 01:12:21 by kiwasa           ###   ########.fr       */
+/*   Updated: 2025/03/30 02:14:53 by kiwasa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "inc/so_long.h"
 
 static void	render_tile(t_game *game, void *img, int x, int y)
 {
@@ -41,5 +41,4 @@ void	render_game(t_game *game)
 		i++;
 	}
 	render_tile(game, game->img.player, game->map.player.x, game->map.player.y);
-	printf("success");
 }

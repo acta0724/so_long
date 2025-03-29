@@ -6,60 +6,31 @@
 /*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:15:24 by kiwasa            #+#    #+#             */
-/*   Updated: 2025/03/29 00:09:24 by kiwasa           ###   ########.fr       */
+/*   Updated: 2025/03/30 02:39:33 by kiwasa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "inc/so_long.h"
 
 int	close_window(t_game *game)
 {
-	int	i;
-
-	if (game->map.grid)
-	{
-		i = 0;
-		while (i < game->map.height)
-		{
-			if (game->map.grid[i])
-				free(game->map.grid[i]);
-			i++;
-		}
-		free(game->map.grid);
-	}
-	if (game->mlx)
-	{
-		if (game->img.empty)
-			mlx_destroy_image(game->mlx, game->img.empty);
-		if (game->img.wall)
-			mlx_destroy_image(game->mlx, game->img.wall);
-		if (game->img.collectible)
-			mlx_destroy_image(game->mlx, game->img.collectible);
-		if (game->img.exit)
-			mlx_destroy_image(game->mlx, game->img.exit);
-		if (game->img.player)
-			mlx_destroy_image(game->mlx, game->img.player);
-		if (game->win)
-			mlx_destroy_window(game->mlx, game->win);
-	}
+	free_map_finish(game);
+	free_mlx_resources(game);
 	exit(0);
 	return (0);
 }
 
-/**
- * Handle keyboard input
- */
 int	key_handler(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
 		close_window(game);
-	else if (keycode == KEY_W || keycode == KEY_UP)
+	else if (keycode == KEY_W)
 		move_player(game, game->map.player.x, game->map.player.y - 1);
-	else if (keycode == KEY_A || keycode == KEY_LEFT)
+	else if (keycode == KEY_A)
 		move_player(game, game->map.player.x - 1, game->map.player.y);
-	else if (keycode == KEY_S || keycode == KEY_DOWN)
+	else if (keycode == KEY_S)
 		move_player(game, game->map.player.x, game->map.player.y + 1);
-	else if (keycode == KEY_D || keycode == KEY_RIGHT)
+	else if (keycode == KEY_D)
 		move_player(game, game->map.player.x + 1, game->map.player.y);
 	return (0);
 }

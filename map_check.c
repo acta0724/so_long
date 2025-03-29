@@ -6,11 +6,11 @@
 /*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:15:37 by kiwasa            #+#    #+#             */
-/*   Updated: 2025/03/28 23:02:58 by kiwasa           ###   ########.fr       */
+/*   Updated: 2025/03/30 02:50:44 by kiwasa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "inc/so_long.h"
 
 void	check_chars(t_game *game)
 {
@@ -23,10 +23,10 @@ void	check_chars(t_game *game)
 		j = 0;
 		while (j < game->map.width)
 		{
-			if (game->map.grid[i][j] != EMPTY 
-					&& game->map.grid[i][j] != WALL
-					&& game->map.grid[i][j] != COLLECTIBLE
-					&& game->map.grid[i][j] != EXIT 
+			if (game->map.grid[i][j] != EMPTY \
+					&& game->map.grid[i][j] != WALL \
+					&& game->map.grid[i][j] != COLLECTIBLE \
+					&& game->map.grid[i][j] != EXIT \
 					&& game->map.grid[i][j] != PLAYER)
 			{
 				error_exit(ERR_CHARS);
@@ -62,7 +62,8 @@ void	check_walls(t_game *game)
 		while (j < game->map.width)
 		{
 			if ((i == 0 || i == game->map.height - 1 || j == 0
-					|| j == game->map.width - 1) && game->map.grid[i][j] != WALL)
+					|| j == game->map.width - 1) \
+					&& game->map.grid[i][j] != WALL)
 				error_exit(ERR_WALL);
 			j++;
 		}
@@ -70,10 +71,34 @@ void	check_walls(t_game *game)
 	}
 }
 
+static void	process_map_row(t_game *game, int i, \
+		int *player_count, int *exit_count)
+{
+	int	j;
+
+	j = -1;
+	while (++j < game->map.width)
+	{
+		if (game->map.grid[i][j] == PLAYER)
+		{
+			game->map.player.x = j;
+			game->map.player.y = i;
+			(*player_count)++;
+		}
+		else if (game->map.grid[i][j] == EXIT)
+		{
+			game->map.exit.x = j;
+			game->map.exit.y = i;
+			(*exit_count)++;
+		}
+		else if (game->map.grid[i][j] == COLLECTIBLE)
+			game->map.collectibles++;
+	}
+}
+
 void	check_components(t_game *game)
 {
 	int	i;
-	int	j;
 	int	player_count;
 	int	exit_count;
 
@@ -83,24 +108,7 @@ void	check_components(t_game *game)
 	i = -1;
 	while (++i < game->map.height)
 	{
-		j = -1;
-		while (++j < game->map.width)
-		{
-			if (game->map.grid[i][j] == PLAYER)
-			{
-				game->map.player.x = j;
-				game->map.player.y = i;
-				player_count++;
-			}
-			else if (game->map.grid[i][j] == EXIT)
-			{
-				game->map.exit.x = j;
-				game->map.exit.y = i;
-				exit_count++;
-			}
-			else if (game->map.grid[i][j] == COLLECTIBLE)
-				game->map.collectibles++;
-		}
+		process_map_row(game, i, &player_count, &exit_count);
 	}
 	if (player_count != 1)
 		error_exit(ERR_PLAYER);

@@ -6,11 +6,11 @@
 /*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:15:57 by kiwasa            #+#    #+#             */
-/*   Updated: 2025/03/28 23:55:56 by kiwasa           ###   ########.fr       */
+/*   Updated: 2025/03/30 02:14:57 by kiwasa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "inc/so_long.h"
 
 int	is_valid_move(t_game *game, int x, int y)
 {

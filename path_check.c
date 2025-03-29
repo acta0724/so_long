@@ -6,11 +6,11 @@
 /*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:15:47 by kiwasa            #+#    #+#             */
-/*   Updated: 2025/03/28 23:22:27 by kiwasa           ###   ########.fr       */
+/*   Updated: 2025/03/30 02:14:49 by kiwasa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "inc/so_long.h"
 
 static char	**create_visited_map(t_game *game)
 {

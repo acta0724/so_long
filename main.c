@@ -6,11 +6,11 @@
 /*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:15:28 by kiwasa            #+#    #+#             */
-/*   Updated: 2025/03/30 01:25:06 by kiwasa           ###   ########.fr       */
+/*   Updated: 2025/03/30 02:14:37 by kiwasa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./so_long.h"
+#include "inc/so_long.h"
 
 static int	check_file_extension(char *filename)
 {

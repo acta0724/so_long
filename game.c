@@ -6,11 +6,11 @@
 /*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:15:19 by kiwasa            #+#    #+#             */
-/*   Updated: 2025/03/30 00:26:37 by kiwasa           ###   ########.fr       */
+/*   Updated: 2025/03/30 02:14:04 by kiwasa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "inc/so_long.h"
 
 static int	handle_interaction(t_game *game, int x, int y)
 {

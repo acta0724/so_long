@@ -6,7 +6,7 @@
 /*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:15:54 by kiwasa            #+#    #+#             */
-/*   Updated: 2025/03/30 01:27:34 by kiwasa           ###   ########.fr       */
+/*   Updated: 2025/03/30 02:39:53 by kiwasa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <fcntl.h>
 # include <mlx.h>
 # include <stdio.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 # define EMPTY '0'
 # define WALL '1'
@@ -31,11 +31,6 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
-
-# define KEY_UP 126
-# define KEY_LEFT 123
-# define KEY_DOWN 125
-# define KEY_RIGHT 124
 
 # define TILE_SIZE 32
 # define BUFFER_SIZE 42
@@ -122,5 +117,8 @@ char	**copy_map(char **map, int height);
 void	free_map(char **map, int height);
 
 char	*get_next_line(int fd);
+void	free_game(t_game *game);
+void	free_map_finish(t_game *game);
+void	free_mlx_resources(t_game *game);
 
 #endif
