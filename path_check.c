@@ -1,8 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   path_check.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 15:15:47 by kiwasa            #+#    #+#             */
+/*   Updated: 2025/03/28 23:22:27 by kiwasa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-/**
- * Create a copy of the map to use for flood fill
- */
 static char	**create_visited_map(t_game *game)
 {
 	char	**visited;
@@ -26,9 +35,6 @@ static char	**create_visited_map(t_game *game)
 	return (visited);
 }
 
-/**
- * Flood fill algorithm to check if all collectibles and exit are reachable
- */
 void	flood_fill(t_game *game, char **visited, int x, int y)
 {
 	if (x < 0 || x >= game->map.width || y < 0 || y >= game->map.height)
@@ -46,9 +52,6 @@ void	flood_fill(t_game *game, char **visited, int x, int y)
 	flood_fill(game, visited, x, y - 1);
 }
 
-/**
- * Check if there's a valid path to all collectibles and the exit
- */
 void	check_path(t_game *game)
 {
 	char	**visited;

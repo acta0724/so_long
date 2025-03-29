@@ -1,8 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_check.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 15:15:37 by kiwasa            #+#    #+#             */
+/*   Updated: 2025/03/28 23:02:58 by kiwasa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-/**
- * Check if the map contains only valid characters
- */
 void	check_chars(t_game *game)
 {
 	int	i;
@@ -14,19 +23,20 @@ void	check_chars(t_game *game)
 		j = 0;
 		while (j < game->map.width)
 		{
-			if (game->map.grid[i][j] != EMPTY && game->map.grid[i][j] != WALL
-				&& game->map.grid[i][j] != COLLECTIBLE
-				&& game->map.grid[i][j] != EXIT && game->map.grid[i][j] != PLAYER)
+			if (game->map.grid[i][j] != EMPTY 
+					&& game->map.grid[i][j] != WALL
+					&& game->map.grid[i][j] != COLLECTIBLE
+					&& game->map.grid[i][j] != EXIT 
+					&& game->map.grid[i][j] != PLAYER)
+			{
 				error_exit(ERR_CHARS);
+			}
 			j++;
 		}
 		i++;
 	}
 }
 
-/**
- * Check if the map is rectangular
- */
 void	check_rectangular(t_game *game)
 {
 	int	i;
@@ -40,9 +50,6 @@ void	check_rectangular(t_game *game)
 	}
 }
 
-/**
- * Check if the map is surrounded by walls
- */
 void	check_walls(t_game *game)
 {
 	int	i;
@@ -63,9 +70,6 @@ void	check_walls(t_game *game)
 	}
 }
 
-/**
- * Check if the map has all required components
- */
 void	check_components(t_game *game)
 {
 	int	i;

@@ -3,27 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iwasakatsuya <iwasakatsuya@student.42.f    +#+  +:+       +#+        */
+/*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 10:00:00 by player            #+#    #+#             */
-/*   Updated: 2025/03/21 02:37:09 by iwasakatsuy      ###   ########.fr       */
+/*   Updated: 2025/03/30 01:25:14 by kiwasa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/**
- * Helper function to load an XPM image
- */
 static void	*load_xpm(t_game *game, char *path)
 {
 	return (mlx_xpm_file_to_image(game->mlx, path, &game->img.width, 
 			&game->img.height));
 }
 
-/**
- * Load all game images
- */
 int	load_images(t_game *game)
 {
 	game->img.empty = load_xpm(game, "textures/empty.xpm");
@@ -37,9 +31,6 @@ int	load_images(t_game *game)
 	return (1);
 }
 
-/**
- * Free all allocated memory
- */
 static void	free_game(t_game *game)
 {
 	int	i;
@@ -72,9 +63,6 @@ static void	free_game(t_game *game)
 	}
 }
 
-/**
- * Initialize game structure and components
- */
 int	init_game(t_game *game, char *map_file)
 {
 	ft_memset(game, 0, sizeof(t_game));
@@ -100,8 +88,9 @@ int	init_game(t_game *game, char *map_file)
 		free_game(game);
 		return (0);
 	}
-	mlx_hook(game->win, 2, 1L << 0, key_handler, game);
-	mlx_hook(game->win, 17, 1L << 17, close_window, game);
+	// mlx_hook(game->win, 2, 1L << 0, key_handler, game);
+	// mlx_hook(game->win, 17, 1L << 17, close_window, game);
+	printf("success");
 	render_game(game);
 	return (1);
 }

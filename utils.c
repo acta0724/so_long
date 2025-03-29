@@ -1,8 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 15:15:57 by kiwasa            #+#    #+#             */
+/*   Updated: 2025/03/28 23:55:56 by kiwasa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-/**
- * Check if a move is valid
- */
 int	is_valid_move(t_game *game, int x, int y)
 {
 	if (x < 0 || x >= game->map.width || y < 0 || y >= game->map.height)
@@ -12,9 +21,6 @@ int	is_valid_move(t_game *game, int x, int y)
 	return (1);
 }
 
-/**
- * Check if the game is won
- */
 int	check_win(t_game *game)
 {
 	if (game->map.player.x == game->map.exit.x
@@ -24,9 +30,6 @@ int	check_win(t_game *game)
 	return (0);
 }
 
-/**
- * Free map memory
- */
 void	free_map(char **map, int height)
 {
 	int	i;
@@ -43,9 +46,6 @@ void	free_map(char **map, int height)
 	free(map);
 }
 
-/**
- * Create a copy of the map
- */
 char	**copy_map(char **map, int height)
 {
 	char	**copy;

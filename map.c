@@ -1,8 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 15:15:42 by kiwasa            #+#    #+#             */
+/*   Updated: 2025/03/29 00:09:09 by kiwasa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-/**
- * Count the height (number of lines) of the map file
- */
 static int	count_map_height(char *map_file)
 {
 	int		fd;
@@ -27,9 +36,6 @@ static int	count_map_height(char *map_file)
 	return (height);
 }
 
-/**
- * Reads map file and stores it in game structure
- */
 int	parse_map(t_game *game, char *map_file)
 {
 	int		fd;
@@ -60,9 +66,6 @@ int	parse_map(t_game *game, char *map_file)
 	return (1);
 }
 
-/**
- * Validate the map according to requirements
- */
 void	validate_map(t_game *game)
 {
 	check_rectangular(game);

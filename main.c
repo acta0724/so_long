@@ -1,16 +1,17 @@
-#include "./so_long.h"
-/**
- * Prints error message and exits the program
- */
-void	error_exit(char *message)
-{
-	ft_putendl_fd(message, 2);
-	exit(EXIT_FAILURE);
-}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 15:15:28 by kiwasa            #+#    #+#             */
+/*   Updated: 2025/03/30 01:25:06 by kiwasa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/**
- * Checks if the file has a .ber extension
- */
+#include "./so_long.h"
+
 static int	check_file_extension(char *filename)
 {
 	char	*dot;
@@ -21,9 +22,6 @@ static int	check_file_extension(char *filename)
 	return (ft_strncmp(dot, ".ber", 5) == 0);
 }
 
-/**
- * Program entry point
- */
 int	main(int argc, char **argv)
 {
 	t_game	game;
@@ -31,9 +29,11 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		error_exit(ERR_ARGS);
 	if (!check_file_extension(argv[1]))
-		error_exit("Error\nFile must have .ber extension");
+		error_exit(ERR_EXTENSION);
 	if (!init_game(&game, argv[1]))
 		error_exit(ERR_MLX);
+	mlx_hook(game.win, 2, 1L << 0, key_handler, &game);
+	mlx_hook(game.win, 17, 1L << 17, close_window, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }

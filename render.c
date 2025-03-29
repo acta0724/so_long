@@ -1,17 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 15:15:51 by kiwasa            #+#    #+#             */
+/*   Updated: 2025/03/30 01:12:21 by kiwasa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-/**
- * Render a specific tile on the window
- */
 static void	render_tile(t_game *game, void *img, int x, int y)
 {
 	mlx_put_image_to_window(game->mlx, game->win, img, x * TILE_SIZE,
 		y * TILE_SIZE);
 }
 
-/**
- * Render the entire game map
- */
 void	render_game(t_game *game)
 {
 	int	i;
@@ -35,4 +41,5 @@ void	render_game(t_game *game)
 		i++;
 	}
 	render_tile(game, game->img.player, game->map.player.x, game->map.player.y);
+	printf("success");
 }
