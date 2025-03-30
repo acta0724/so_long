@@ -6,7 +6,7 @@
 /*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 02:28:34 by kiwasa            #+#    #+#             */
-/*   Updated: 2025/03/30 02:38:32 by kiwasa           ###   ########.fr       */
+/*   Updated: 2025/03/31 00:33:31 by kiwasa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	free_mlx_resources(t_game *game)
 			mlx_destroy_image(game->mlx, game->img.player);
 		if (game->win)
 			mlx_destroy_window(game->mlx, game->win);
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
 	}
 }
 
@@ -52,4 +54,5 @@ void	free_game(t_game *game)
 {
 	free_map_finish(game);
 	free_mlx_resources(game);
+	get_next_line(-1);
 }

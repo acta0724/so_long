@@ -6,7 +6,7 @@
 /*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:15:24 by kiwasa            #+#    #+#             */
-/*   Updated: 2025/03/30 02:39:33 by kiwasa           ###   ########.fr       */
+/*   Updated: 2025/03/31 00:33:25 by kiwasa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	close_window(t_game *game)
 {
 	free_map_finish(game);
 	free_mlx_resources(game);
+	get_next_line(-1);
 	exit(0);
 	return (0);
 }

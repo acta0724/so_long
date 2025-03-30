@@ -6,7 +6,7 @@
 /*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:15:47 by kiwasa            #+#    #+#             */
-/*   Updated: 2025/03/30 02:14:49 by kiwasa           ###   ########.fr       */
+/*   Updated: 2025/03/31 01:32:35 by kiwasa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ void	flood_fill(t_game *game, char **visited, int x, int y)
 	if (visited[y][x] == COLLECTIBLE)
 		game->map.collectibles_found++;
 	if (visited[y][x] == EXIT)
+	{
 		game->map.exit_found = 1;
+		return ;
+	}
 	visited[y][x] = 'V';
 	flood_fill(game, visited, x + 1, y);
 	flood_fill(game, visited, x - 1, y);

@@ -6,7 +6,7 @@
 /*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:15:57 by kiwasa            #+#    #+#             */
-/*   Updated: 2025/03/30 02:14:57 by kiwasa           ###   ########.fr       */
+/*   Updated: 2025/03/31 00:42:09 by kiwasa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,27 +44,4 @@ void	free_map(char **map, int height)
 		i++;
 	}
 	free(map);
-}
-
-char	**copy_map(char **map, int height)
-{
-	char	**copy;
-	int		i;
-
-	copy = (char **)malloc(sizeof(char *) * (height + 1));
-	if (!copy)
-		return (NULL);
-	i = 0;
-	while (i < height)
-	{
-		copy[i] = ft_strdup(map[i]);
-		if (!copy[i])
-		{
-			free_map(copy, i);
-			return (NULL);
-		}
-		i++;
-	}
-	copy[i] = NULL;
-	return (copy);
 }

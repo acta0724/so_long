@@ -6,7 +6,7 @@
 /*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 04:11:35 by kiwasa            #+#    #+#             */
-/*   Updated: 2025/03/30 02:14:20 by kiwasa           ###   ########.fr       */
+/*   Updated: 2025/03/31 00:41:11 by kiwasa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static char	*append_to_buffer(char *buffer, char *temp, int bytes_read)
 			free(buffer);
 			return (NULL);
 		}
+		free(buffer);
 		buffer = new_buffer;
 	}
 	return (buffer);
@@ -89,8 +90,8 @@ char	*get_next_line(int fd)
 	char		*temp;
 	int			bytes_read;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
+	if (fd == -1 && buffer)
+		return (free(buffer), NULL);
 	temp = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!temp)
 		return (NULL);
@@ -110,20 +111,3 @@ char	*get_next_line(int fd)
 	buffer = update_buffer(buffer, temp);
 	return (line);
 }
-
-// #include <stdio.h>
-// #include <fcntl.h>
-// int main()
-// {
-// 	char *line;
-// 	int fd;
-
-// 	fd = open("test.txt", O_RDONLY);
-// 	while ((line = get_next_line(fd)))
-// 	{
-// 		printf("%s\n", line);
-// 		free(line);
-// 	}
-// 	close(fd);
-// 	return (0);
-// }

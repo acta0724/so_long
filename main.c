@@ -6,7 +6,7 @@
 /*   By: kiwasa <kiwasa@student.42.jp>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:15:28 by kiwasa            #+#    #+#             */
-/*   Updated: 2025/03/30 02:14:37 by kiwasa           ###   ########.fr       */
+/*   Updated: 2025/03/30 21:31:42 by kiwasa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ int	main(int argc, char **argv)
 	mlx_hook(game.win, 2, 1L << 0, key_handler, &game);
 	mlx_hook(game.win, 17, 1L << 17, close_window, &game);
 	mlx_loop(game.mlx);
+	mlx_destroy_display(game.mlx);
+	free_game(&game);
 	return (0);
 }
